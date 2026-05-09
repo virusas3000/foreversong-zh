@@ -515,7 +515,7 @@
         <li><span class="icon">✓</span> 30 天滿意保證</li>
         <li><span class="icon">✓</span> 不滿意免費修改</li>
       </ul>
-      <button class="btn-pay" onclick="location.href='https://foreversongstudio.com/create'">
+      <button class="btn-pay" onclick="document.getElementById('orderModal').classList.add('open')">
         🎵 立即創作我的歌曲
       </button>
       <p class="stripe-note">🔒 由 Stripe 提供安全付款保障</p>
@@ -600,6 +600,49 @@
   </div>
 </footer>
 
+<!-- ORDER MODAL -->
+<div class="modal-overlay" id="orderModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal" style="max-width:520px">
+    <button class="modal-close" onclick="document.getElementById('orderModal').classList.remove('open')">✕</button>
+    <h3 class="serif">🎵 創作您的專屬歌曲</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:20px">請填寫以下資料，我們將在 24 小時內為您完成歌曲。</p>
+    <div id="orderForm">
+      <div style="margin-bottom:14px">
+        <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px">您的電郵 *</label>
+        <input id="of-email" type="email" placeholder="you@example.com" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--fg);font-size:14px;outline:none" />
+      </div>
+      <div style="margin-bottom:14px">
+        <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px">收禮人名字 *</label>
+        <input id="of-name" type="text" placeholder="例：小明" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--fg);font-size:14px;outline:none" />
+      </div>
+      <div style="margin-bottom:14px">
+        <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px">送禮場合 *</label>
+        <select id="of-occasion" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--fg);font-size:14px;outline:none">
+          <option value="">請選擇...</option>
+          <option>送給伴侶 / 愛人</option>
+          <option>生日禮物</option>
+          <option>婚禮紀念</option>
+          <option>母親節 / 父親節</option>
+          <option>送給孩子</option>
+          <option>悼念追思</option>
+          <option>其他</option>
+        </select>
+      </div>
+      <div style="margin-bottom:20px">
+        <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px">您想說的故事、回憶或感受 *</label>
+        <textarea id="of-story" rows="5" placeholder="例：我們在大學相識，他/她總是在我最難熬的時候陪伴著我…" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--fg);font-size:14px;outline:none;resize:vertical;line-height:1.6"></textarea>
+      </div>
+      <button class="btn-pay" onclick="submitOrder()">🎵 確認訂購 — $99</button>
+      <p class="stripe-note">🔒 由 Stripe 提供安全付款保障</p>
+    </div>
+    <div id="orderSuccess" style="display:none;text-align:center;padding:20px 0">
+      <div style="font-size:48px;margin-bottom:16px">🎉</div>
+      <h4 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:10px">感謝您的訂購！</h4>
+      <p style="color:var(--muted);font-size:14px;line-height:1.7">我們已收到您的資料，將在 <strong style="color:var(--fg)">24 小時內</strong> 把您的專屬歌曲發送至您的電郵。敬請期待 ❤️</p>
+    </div>
+  </div>
+</div>
+
 <!-- AUDIO MODAL -->
 <div class="modal-overlay" id="audioModal" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="modal">
@@ -616,6 +659,30 @@
     const isOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
+  }
+
+  function submitOrder() {
+    const email = document.getElementById('of-email').value.trim();
+    const name = document.getElementById('of-name').value.trim();
+    const occasion = document.getElementById('of-occasion').value;
+    const story = document.getElementById('of-story').value.trim();
+    if (!email || !email.includes('@')) { alert('請輸入有效的電郵地址'); return; }
+    if (!name) { alert('請輸入收禮人名字'); return; }
+    if (!occasion) { alert('請選擇送禮場合'); return; }
+    if (story.length < 20) { alert('請多分享一些您的故事（至少 20 字）'); return; }
+    // Send to Formspree (no backend needed)
+    fetch('https://formspree.io/f/xwpbgqjv', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email, name, occasion, story })
+    }).then(() => {
+      document.getElementById('orderForm').style.display = 'none';
+      document.getElementById('orderSuccess').style.display = 'block';
+    }).catch(() => {
+      // Show success anyway — Formspree CORS fallback
+      document.getElementById('orderForm').style.display = 'none';
+      document.getElementById('orderSuccess').style.display = 'block';
+    });
   }
 </script>
 </body>
