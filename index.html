@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ForeverSong - 為您定制永恆之歌</title>
-  <meta name="description" content="將您的回憶、愛情故事或特別時刻，化為一首專業定制的歌曲。最用心的個人化禮物。">
+  <title>廣東歌·為你 — Cantopop for You</title>
+  <meta name="description" content="全粵語訂製歌曲平台。識講先識寫 — 英文同普通話做唔到嘅味道，只有我哋做得到。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Noto+Serif+TC:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -57,6 +57,7 @@
       font-size: 18px;
     }
     .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; }
+    .logo-sub { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
     .nav-links { display: flex; gap: 28px; }
     .nav-links a {
       font-size: 14px; color: var(--muted); text-decoration: none;
@@ -92,8 +93,9 @@
     .hero h1 span { color: var(--primary); }
     .hero-sub {
       font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--muted); max-width: 520px;
+      color: var(--muted); max-width: 560px;
       margin: 0 auto 36px;
+      line-height: 1.8;
     }
     .btn-hero {
       display: inline-flex; align-items: center; gap: 10px;
@@ -123,12 +125,11 @@
       width: 36px; height: 36px; border-radius: 50%;
       border: 2px solid var(--bg);
       background: var(--card2);
-      margin-left: -8px; first-child { margin-left: 0 }
+      margin-left: -8px;
       overflow: hidden; display: flex; align-items: center; justify-content: center;
       font-size: 11px; font-weight: 700; color: var(--fg);
     }
     .avatar:first-child { margin-left: 0; }
-    .avatar img { width: 100%; height: 100%; object-fit: cover; }
     .avatar-count {
       width: 36px; height: 36px; border-radius: 50%;
       background: var(--primary); color: #fff;
@@ -145,6 +146,22 @@
     }
     .listen-btn:hover { color: var(--primary); }
 
+    /* DISCOUNT BANNER */
+    .discount-bar {
+      background: rgba(201,169,110,0.08);
+      border: 1px dashed rgba(201,169,110,0.4);
+      color: var(--accent);
+      font-size: 13px; font-weight: 600;
+      padding: 10px 20px; border-radius: 8px;
+      display: inline-block; margin-top: 20px;
+      letter-spacing: 0.3px;
+    }
+    .discount-bar code {
+      background: rgba(201,169,110,0.15);
+      padding: 2px 8px; border-radius: 4px;
+      font-family: monospace; letter-spacing: 2px;
+    }
+
     /* SECTIONS */
     section { padding: 80px 24px; }
     .container { max-width: 1100px; margin: 0 auto; }
@@ -155,7 +172,34 @@
       font-size: clamp(1.8rem, 3.5vw, 2.8rem);
       margin-bottom: 12px;
     }
-    .section-header p { color: var(--muted); font-size: 15px; }
+    .section-header p { color: var(--muted); font-size: 15px; max-width: 560px; margin: 0 auto; }
+
+    /* PROBLEM SECTION */
+    .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .problem-card {
+      background: var(--card2); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px;
+      position: relative; overflow: hidden;
+    }
+    .problem-card.highlight { border-color: rgba(176,83,110,0.4); background: rgba(176,83,110,0.05); }
+    .problem-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--border);
+    }
+    .problem-card.highlight::before { background: var(--primary); }
+    .problem-icon { font-size: 2rem; margin-bottom: 12px; }
+    .problem-title { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+    .problem-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .problem-card.highlight .problem-desc { color: var(--fg); }
+
+    /* LYRIC QUOTE */
+    .lyric-quote {
+      background: rgba(176,83,110,0.06);
+      border-left: 3px solid var(--primary);
+      padding: 16px 20px; border-radius: 0 12px 12px 0;
+      margin-top: 28px;
+      font-style: italic; font-size: 15px; line-height: 1.8; color: var(--fg);
+    }
 
     /* HOW IT WORKS */
     .how-bg { background: var(--card); }
@@ -164,7 +208,7 @@
     .step-num {
       display: inline-flex; align-items: center; justify-content: center;
       width: 64px; height: 64px; border-radius: 50%;
-      background: rgba(var(--primary-rgb, 176,83,110), 0.12);
+      background: rgba(176,83,110,0.12);
       color: var(--primary);
       font-family: 'Playfair Display', serif; font-size: 1.8rem;
       margin-bottom: 20px;
@@ -187,6 +231,37 @@
       transition: all 0.2s;
     }
     .btn-cta:hover { background: var(--primary-light); transform: translateY(-1px); }
+
+    /* SCENARIOS */
+    .scenarios { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .scenario-card {
+      background: var(--card2); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px;
+      transition: all 0.2s; cursor: pointer;
+    }
+    .scenario-card:hover { border-color: var(--primary); background: var(--card); transform: translateY(-2px); }
+    .scenario-emoji { font-size: 2rem; margin-bottom: 10px; }
+    .scenario-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .scenario-context { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+    .scenario-lyric {
+      font-size: 13px; color: var(--primary); font-style: italic;
+      background: rgba(176,83,110,0.08);
+      border-left: 2px solid var(--primary);
+      padding: 8px 12px; border-radius: 0 8px 8px 0;
+      line-height: 1.6;
+    }
+
+    /* STYLES */
+    .styles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .style-card {
+      background: var(--card2); border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px; text-align: center;
+      transition: all 0.2s;
+    }
+    .style-card:hover { border-color: rgba(201,169,110,0.4); background: rgba(201,169,110,0.04); }
+    .style-card .icon { font-size: 2rem; margin-bottom: 8px; }
+    .style-card .name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+    .style-card .desc { font-size: 12px; color: var(--muted); }
 
     /* TESTIMONIALS */
     .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
@@ -256,9 +331,7 @@
     .stripe-note { font-size: 12px; color: var(--muted); margin-top: 12px; }
 
     /* FAQ */
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-    }
+    .faq-item { border-bottom: 1px solid var(--border); }
     .faq-q {
       width: 100%; background: none; border: none; color: var(--fg);
       font-size: 15px; font-weight: 500; text-align: left;
@@ -287,7 +360,7 @@
     .footer-links a:hover { color: var(--fg); }
     .footer-copy { font-size: 12px; color: var(--muted); }
 
-    /* MODAL */
+    /* AUDIO MODAL */
     .modal-overlay {
       display: none; position: fixed; inset: 0; z-index: 200;
       background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
@@ -324,12 +397,15 @@
   <div class="nav-inner">
     <a href="#" class="logo">
       <div class="logo-icon">🎵</div>
-      <span class="logo-text">ForeverSong</span>
+      <div>
+        <div class="logo-text">廣東歌·為你</div>
+        <div class="logo-sub">Cantopop for you</div>
+      </div>
     </a>
     <div class="nav-links">
-      <a href="#how">運作方式</a>
+      <a href="#why">點解揀我哋</a>
       <a href="#occasions">送禮場合</a>
-      <a href="create.html">價格</a>
+      <a href="#how">點樣做</a>
       <a href="#faq">常見問題</a>
     </div>
   </div>
@@ -337,17 +413,20 @@
 
 <!-- HERO -->
 <section class="hero">
-  <p class="eyebrow">🏆 全球首選定制歌曲平台</p>
-  <h1 class="serif">將您的回憶化為<span>永恆之歌</span><br>令他們一生難忘</h1>
-  <p class="hero-sub">您將送出的，是最用心的個人化禮物。</p>
+  <p class="eyebrow">🇭🇰 香港人嘅歌 · 為你而寫</p>
+  <h1 class="serif">英文普通話<span>做唔到</span>嘅<br>粵語味道，只有我哋做得到</h1>
+  <p class="hero-sub">
+    全粵語訂製歌曲平台。識講先識寫 —<br>
+    「遲到大王」「打邊爐搶牛柏葉」「阿媽嘮叨」，呢啲先係我哋嘅語言。
+  </p>
   <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
-    <a href="create.html" class="btn-hero">🎵 立即創作專屬歌曲</a>
+    <a href="create.html" class="btn-hero">🎵 立即訂製廣東歌</a>
     <button class="listen-btn" onclick="document.getElementById('audioModal').classList.add('open')">
       ▶ 試聽示範歌曲
     </button>
   </div>
-  <p class="hero-note">只需 2 分鐘 — 提供名字、幾段回憶、以及您想要的感覺。</p>
-  <p class="hero-note"><em>24 小時內用心交付，充滿愛意</em></p>
+  <p class="hero-note">只需 2 分鐘 — 講低你嘅故事，我哋幫你寫成歌。</p>
+  <p class="hero-note"><em>快則三日，慢則五日，一首真正屬於香港人嘅歌</em></p>
   <div class="stars">
     <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
   </div>
@@ -359,7 +438,41 @@
       <div class="avatar" style="background:#5a4a3a">😄</div>
       <div class="avatar-count">996+</div>
     </div>
-    <span>超過 1,000 個家庭深愛這份禮物</span>
+    <span>超過 1,000 個香港人深愛呢份禮物</span>
+  </div>
+  <div class="discount-bar">
+    🎁 首單9折 &nbsp;|&nbsp; 優惠碼：<code>HKSONG</code> &nbsp;·&nbsp; 香港人撐香港人
+  </div>
+</section>
+
+<!-- PROBLEM SECTION -->
+<section id="why" style="background:var(--card)">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="serif">英文平台？普通話平台？<br>但係我哋講緊<span style="color:var(--primary)">粵語</span>喎？</h2>
+      <p>想訂首歌送俾人，上網一搜，全部都係英文平台、普通話平台。勉強落單，收到嚟歌詞生硬、發音怪，仲要「你好嗎」「謝謝你」— 喂，我哋香港人唔係咁講嘢㗎！</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon">🌐</div>
+        <div class="problem-title">英文平台</div>
+        <div class="problem-desc">翻譯失魂，地道粵語文化根本譯唔到。「打邊爐」「飲茶傾偈」點解釋？</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">📲</div>
+        <div class="problem-title">普通話平台</div>
+        <div class="problem-desc">「你好嗎」「謝謝你」— 唔係我哋香港人嘅語氣，唱出嚟完全唔親切。</div>
+      </div>
+      <div class="problem-card highlight">
+        <div class="problem-icon">🎵</div>
+        <div class="problem-title">廣東歌·為你 ✓</div>
+        <div class="problem-desc">全粵語介面，本地音樂人，用你嘅故事、你嘅語氣、你嘅集體回憶寫成歌。</div>
+      </div>
+    </div>
+    <div class="lyric-quote">
+      「<strong>遲到大王</strong>」、「<strong>豬</strong>」、「<strong>飲茶傾偈</strong>」、「<strong>打邊爐搶牛柏葉</strong>」、「<strong>阿媽成日話唔著多件衫</strong>」、老細句「<strong>唔好急，最緊要快</strong>」—
+      呢啲係我哋嘅集體回憶，只有識粵語嘅人，先寫到出嚟，唱到入心！
+    </div>
   </div>
 </section>
 
@@ -367,138 +480,203 @@
 <section class="how-bg" id="how">
   <div class="container">
     <div class="section-header">
-      <h2 class="serif">如何運作</h2>
-      <p>三個簡單步驟，打造他們珍藏一生的禮物</p>
+      <h2 class="serif">三步，一首屬於你嘅廣東歌</h2>
+      <p>快則三日，慢則五日，交到你手</p>
     </div>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
-        <h3>告訴我們您的故事</h3>
-        <p>分享回憶、名字，以及令對方特別的一切。</p>
+        <h3>講低你嘅故事</h3>
+        <p>用粵語錄音或文字，講你同佢之間嘅故事、細節、笑位、暖心時刻。</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <h3>我們為您創作歌曲</h3>
-        <p>我們的團隊為您填寫個人化歌詞並譜出旋律。</p>
+        <h3>揀曲風</h3>
+        <p>四款港式曲風任揀：經典粵語流行、搞笑Rap、溫馨Ballad、老派Cantopop。</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <h3>專屬交付給您</h3>
-        <p>透過私人連結收到您的獨一無二歌曲。</p>
+        <h3>收歌！</h3>
+        <p>地道粵語歌詞 + 專業歌手演繹 + 精美歌詞卡，私人連結收歌，永久珍藏。</p>
       </div>
     </div>
+
+    <!-- MUSIC STYLES -->
+    <div style="margin-bottom: 40px;">
+      <h3 style="text-align:center; font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:8px;">揀你嘅曲風</h3>
+      <p style="text-align:center; color:var(--muted); font-size:14px; margin-bottom:20px;">四種風格，總有一款啱你</p>
+      <div class="styles-grid">
+        <div class="style-card">
+          <div class="icon">🎹</div>
+          <div class="name">經典粵語流行</div>
+          <div class="desc">九十年代Cantopop味道，送俾父母一輩最啱</div>
+        </div>
+        <div class="style-card">
+          <div class="icon">🎤</div>
+          <div class="name">搞笑Rap</div>
+          <div class="desc">港式Rap，全場爆笑，朋友聚會必備</div>
+        </div>
+        <div class="style-card">
+          <div class="icon">🌙</div>
+          <div class="name">溫馨Ballad</div>
+          <div class="desc">慢歌抒情，適合紀念日、告別、感謝</div>
+        </div>
+        <div class="style-card">
+          <div class="icon">🎙️</div>
+          <div class="name">老派Cantopop</div>
+          <div class="desc">廿世紀港式情懷，懷舊味足，令人動容</div>
+        </div>
+      </div>
+    </div>
+
     <div class="center">
-      <a href="create.html" class="btn-cta">🎵 立即創作專屬歌曲</a>
+      <a href="create.html" class="btn-cta">🎵 立即訂製廣東歌</a>
+    </div>
+  </div>
+</section>
+
+<!-- SCENARIOS -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="serif">每個故事，都有獨一無二嘅廣東歌</h2>
+      <p>「你成日話我唔記得紀念日，但今年我記得喇」— 呢啲細節，英文同普通話點譯？</p>
+    </div>
+    <div class="scenarios">
+      <div class="scenario-card" onclick="location.href='create.html'">
+        <div class="scenario-emoji">🍵</div>
+        <div class="scenario-title">兄弟情</div>
+        <div class="scenario-context">茶餐廳聚舊，送首歌笑到噴奶茶</div>
+        <div class="scenario-lyric">「每次打邊爐你都搶我牛柏葉」</div>
+      </div>
+      <div class="scenario-card" onclick="location.href='create.html'">
+        <div class="scenario-emoji">💕</div>
+        <div class="scenario-title">情侶紀念日</div>
+        <div class="scenario-context">又喊又笑，令人難忘嘅驚喜</div>
+        <div class="scenario-lyric">「你成日話我唔記得紀念日，但今年我記得喇」</div>
+      </div>
+      <div class="scenario-card" onclick="location.href='create.html'">
+        <div class="scenario-emoji">👩‍👦</div>
+        <div class="scenario-title">媽媽生日</div>
+        <div class="scenario-context">感動到阿媽抹眼淚</div>
+        <div class="scenario-lyric">「阿媽，我知你成日話我唔著多件衫，但我而家識照顧自己喇」</div>
+      </div>
+      <div class="scenario-card" onclick="location.href='create.html'">
+        <div class="scenario-emoji">🏢</div>
+        <div class="scenario-title">老闆退休</div>
+        <div class="scenario-context">全公司大笑，笑完有點感動</div>
+        <div class="scenario-lyric">「你成日話『唔好急，最緊要快』，我哋會記住」</div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section>
+<section style="background:var(--card)">
   <div class="container">
     <div class="section-header">
-      <h2 class="serif">最觸動人心的時刻</h2>
-      <p>看看各個家庭如何說</p>
+      <h2 class="serif">最觸動人心嘅時刻</h2>
+      <p>香港人話俾香港人聽</p>
     </div>
     <div class="testimonials">
       <div class="testimonial">
         <div class="stars">
           <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
         </div>
-        <blockquote>「歌詞裡出現了她的名字，她瞬間眼眶泛紅。這是我送過最好的禮物。」</blockquote>
-        <p class="name">Sarah M.</p>
-        <p class="role">送給女兒的禮物</p>
+        <blockquote>「歌詞入面有我哋識咗嘅細節，佢一聽到就眼眶紅。呢份禮物冇得比！」</blockquote>
+        <p class="name">Kevin C.</p>
+        <p class="role">送俾女友紀念日</p>
       </div>
       <div class="testimonial">
         <div class="stars">
           <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
         </div>
-        <blockquote>「他真的哭了。歌詞完美地捕捉了我們一路走來的故事。」</blockquote>
-        <p class="name">James K.</p>
-        <p class="role">週年紀念禮物</p>
-      </div>
-      <div class="testimonial">
-        <div class="stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-        </div>
-        <blockquote>「媽媽第一天就播了 20 次。她現在稱它為『她的歌』。」</blockquote>
-        <p class="name">Emma R.</p>
+        <blockquote>「阿媽第一日就播咗二十次，佢話係『自己嘅歌』。多謝廣東歌·為你！」</blockquote>
+        <p class="name">Mandy L.</p>
         <p class="role">母親節禮物</p>
+      </div>
+      <div class="testimonial">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <blockquote>「搞笑Rap成首都係我哋公司嘅笑料，老細退休派對全場笑到喊！」</blockquote>
+        <p class="name">Thomas W.</p>
+        <p class="role">老闆退休禮物</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- USE CASES -->
-<section id="occasions" style="background:var(--card)">
+<section id="occasions">
   <div class="container">
     <div class="section-header">
-      <h2 class="serif">每段故事都值得一首歌</h2>
-      <p>選擇一個啟發您定制歌曲的場合</p>
+      <h2 class="serif">每段故事都值得一首廣東歌</h2>
+      <p>揀一個啟發你訂製歌曲嘅場合</p>
     </div>
     <div class="use-cases">
       <div class="use-case" onclick="location.href='create.html'">
         <div class="use-case-icon">❤️</div>
         <div>
-          <h3>送給伴侶</h3>
-          <p>用歌曲表達您的愛意</p>
+          <h3>情侶 · 紀念日</h3>
+          <p>用廣東話表達你嘅愛意</p>
         </div>
       </div>
       <div class="use-case" onclick="location.href='create.html'">
-        <div class="use-case-icon">🍼</div>
-        <div>
-          <h3>送給孩子</h3>
-          <p>專屬於他們的搖籃曲</p>
-        </div>
-      </div>
-      <div class="use-case" onclick="location.href='create.html'">
-        <div class="use-case-icon">🙏</div>
+        <div class="use-case-icon">👩‍👦</div>
         <div>
           <h3>送給父母</h3>
-          <p>感謝他們的一切付出</p>
+          <p>感謝阿媽阿爸嘅付出</p>
+        </div>
+      </div>
+      <div class="use-case" onclick="location.href='create.html'">
+        <div class="use-case-icon">🍻</div>
+        <div>
+          <h3>兄弟姐妹</h3>
+          <p>多年情誼，用歌留住</p>
         </div>
       </div>
       <div class="use-case" onclick="location.href='create.html'">
         <div class="use-case-icon">🎂</div>
         <div>
           <h3>生日禮物</h3>
-          <p>讓他們的生日難以忘懷</p>
+          <p>令佢嘅生日難以忘懷</p>
         </div>
       </div>
       <div class="use-case" onclick="location.href='create.html'">
         <div class="use-case-icon">💍</div>
         <div>
-          <h3>婚禮紀念</h3>
-          <p>獻給第一支舞的特別之歌</p>
+          <h3>婚禮 · 求婚</h3>
+          <p>獻給最重要嘅一刻</p>
         </div>
       </div>
       <div class="use-case" onclick="location.href='create.html'">
-        <div class="use-case-icon">🐾</div>
+        <div class="use-case-icon">🏢</div>
         <div>
-          <h3>送給毛孩</h3>
-          <p>牠們專屬的主題曲</p>
+          <h3>同事 · 老闆</h3>
+          <p>退休、離職，搵首歌送行</p>
         </div>
       </div>
       <div class="use-case" onclick="location.href='create.html'">
         <div class="use-case-icon">🕊️</div>
         <div>
           <h3>悼念追思</h3>
-          <p>紀念您深愛的人</p>
+          <p>紀念你深愛嘅人</p>
         </div>
       </div>
     </div>
     <div class="center">
-      <a href="create.html" class="btn-cta">🎵 立即創作專屬歌曲</a>
+      <a href="create.html" class="btn-cta">🎵 立即訂製廣東歌</a>
     </div>
   </div>
 </section>
 
 <!-- PRICING -->
-<section id="pricing">
+<section id="pricing" class="pricing-bg">
   <div class="container">
     <div class="section-header">
-      <h2 class="serif">簡單透明的定價</h2>
-      <p>無隱藏費用，不滿意全額退款</p>
+      <h2 class="serif">簡單透明嘅定價</h2>
+      <p>無隱藏費用，唔滿意全額退款</p>
     </div>
     <div class="pricing-card">
       <div>
@@ -507,78 +685,73 @@
       </div>
       <div class="badge">限時優惠 5折</div>
       <ul class="price-features">
-        <li><span class="icon">✓</span> 100% 原創個人化歌詞</li>
-        <li><span class="icon">✓</span> 專業音樂製作</li>
-        <li><span class="icon">✓</span> 24 小時內完成交付</li>
+        <li><span class="icon">✓</span> 100% 原創地道粵語歌詞</li>
+        <li><span class="icon">✓</span> 香港本地音樂人創作</li>
+        <li><span class="icon">✓</span> 專業歌手演繹錄音</li>
+        <li><span class="icon">✓</span> 快則3日、慢則5日交歌</li>
         <li><span class="icon">✓</span> 高品質 MP3 永久下載</li>
+        <li><span class="icon">✓</span> 精美歌詞卡附送</li>
         <li><span class="icon">✓</span> 私人分享連結</li>
-        <li><span class="icon">✓</span> 30 天滿意保證</li>
-        <li><span class="icon">✓</span> 不滿意免費修改</li>
+        <li><span class="icon">✓</span> 唔滿意免費修改</li>
       </ul>
       <button class="btn-pay" onclick="location.href='create.html'">
-        🎵 立即創作我的歌曲
+        🎵 立即訂製我嘅廣東歌
       </button>
+      <p style="font-size:13px;color:var(--accent);margin-top:8px;">首單9折 · 優惠碼：HKSONG</p>
       <p class="stripe-note">🔒 由 Stripe 提供安全付款保障</p>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section id="faq" style="background:var(--card)">
+<section id="faq">
   <div class="container-tight">
     <div class="section-header">
-      <h2 class="serif">您的疑問，我們來解答</h2>
-      <p>關於定制歌曲的所有常見問題</p>
+      <h2 class="serif">你嘅疑問，我哋嚟解答</h2>
+      <p>關於訂製廣東歌嘅所有常見問題</p>
     </div>
     <div style="border-top:1px solid var(--border)">
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          需要多長時間？
+          需要幾耐時間？
           <span class="faq-arrow">+</span>
         </button>
-        <div class="faq-a">您的歌曲通常在數小時內完成，視乎需求最多 24 小時。完成後即可下載及分享您的專屬歌曲。</div>
+        <div class="faq-a">快則三日，慢則五日。完成後你會收到私人連結，可以即時下載及分享。</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          如果不滿意怎麼辦？
+          如果唔滿意點算？
           <span class="faq-arrow">+</span>
         </button>
-        <div class="faq-a">我們提供「24 小時完美保證」。收到歌曲後 24 小時內如有不滿，請聯絡我們，我們將免費為您修改直至滿意為止。</div>
+        <div class="faq-a">我哋提供免費修改服務，直至你滿意為止。唔滿意亦可申請全額退款。</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          可以要求修改嗎？
+          歌詞一定係粵語嘅？
           <span class="faq-arrow">+</span>
         </button>
-        <div class="faq-a">當然可以！如果您不滿意，我們會免費為您修改，直到您喜歡為止。</div>
+        <div class="faq-a">係！我哋專做地道粵語歌詞，用香港人嘅語氣同口吻寫，絕對唔係英文或普通話翻譯過嚟嘅生硬歌詞。</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          如何收到及分享歌曲？
+          點樣收到同分享首歌？
           <span class="faq-arrow">+</span>
         </button>
-        <div class="faq-a">歌曲透過私人連結發送，您可以與任何人分享。同時提供高品質 MP3 格式下載，永久保存。</div>
+        <div class="faq-a">歌曲透過私人連結發送，你可以分享俾任何人。同時提供高品質 MP3 格式下載，永久保存。</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          我的故事會保密嗎？
+          我嘅故事會保密嗎？
           <span class="faq-arrow">+</span>
         </button>
-        <div class="faq-a">完全保密。只有您選擇分享連結的人才能聆聽。我們用心保護您的故事，絕不公開分享任何歌曲。</div>
+        <div class="faq-a">完全保密。只有你選擇分享連結嘅人先聽到。我哋用心保護你嘅故事，絕不公開分享任何歌曲。</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           付款安全嗎？
           <span class="faq-arrow">+</span>
         </button>
-        <div class="faq-a">100% 安全。我們使用 Stripe 付款系統，與 Amazon、Google 等全球數百萬企業使用的相同技術。您的信用卡資料絕不會經過我們的伺服器。</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          下載後會怎樣？
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-a">下載後歌曲永久屬於您。請注意，下載即代表接受最終產品，因此請確保您滿意後再下載！</div>
+        <div class="faq-a">100% 安全。我哋使用 Stripe 付款系統，你嘅信用卡資料絕不會經過我哋嘅伺服器。</div>
       </div>
     </div>
   </div>
@@ -587,61 +760,18 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo serif">ForeverSong</div>
+    <div class="footer-logo serif">廣東歌·為你</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:16px;">Cantopop for you</div>
     <div class="footer-links">
-      <a href="#">關於我們</a>
-      <a href="#how">運作方式</a>
+      <a href="#why">點解揀我哋</a>
+      <a href="#how">點樣做</a>
       <a href="#occasions">送禮場合</a>
-      <a href="create.html">價格</a>
+      <a href="#pricing">價格</a>
       <a href="#faq">常見問題</a>
-      <a href="https://foreversongstudio.com/contact">聯絡我們</a>
     </div>
-    <p class="footer-copy">© 2025 ForeverSong. 版權所有。用心為每個珍貴時刻而生 ❤️</p>
+    <p class="footer-copy">© 2025 廣東歌·為你. 版權所有。🇭🇰 香港人 · 香港歌 · 為你而寫</p>
   </div>
 </footer>
-
-<!-- ORDER MODAL -->
-<div class="modal-overlay" id="orderModal" onclick="if(event.target===this)this.classList.remove('open')">
-  <div class="modal" style="max-width:520px">
-    <button class="modal-close" onclick="document.getElementById('orderModal').classList.remove('open')">✕</button>
-    <h3 class="serif">🎵 創作您的專屬歌曲</h3>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:20px">請填寫以下資料，我們將在 24 小時內為您完成歌曲。</p>
-    <div id="orderForm">
-      <div style="margin-bottom:14px">
-        <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px">您的電郵 *</label>
-        <input id="of-email" type="email" placeholder="you@example.com" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--fg);font-size:14px;outline:none" />
-      </div>
-      <div style="margin-bottom:14px">
-        <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px">收禮人名字 *</label>
-        <input id="of-name" type="text" placeholder="例：小明" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--fg);font-size:14px;outline:none" />
-      </div>
-      <div style="margin-bottom:14px">
-        <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px">送禮場合 *</label>
-        <select id="of-occasion" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--fg);font-size:14px;outline:none">
-          <option value="">請選擇...</option>
-          <option>送給伴侶 / 愛人</option>
-          <option>生日禮物</option>
-          <option>婚禮紀念</option>
-          <option>母親節 / 父親節</option>
-          <option>送給孩子</option>
-          <option>悼念追思</option>
-          <option>其他</option>
-        </select>
-      </div>
-      <div style="margin-bottom:20px">
-        <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px">您想說的故事、回憶或感受 *</label>
-        <textarea id="of-story" rows="5" placeholder="例：我們在大學相識，他/她總是在我最難熬的時候陪伴著我…" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--fg);font-size:14px;outline:none;resize:vertical;line-height:1.6"></textarea>
-      </div>
-      <button class="btn-pay" onclick="submitOrder()">🎵 確認訂購 — $1999</button>
-      <p class="stripe-note">🔒 由 Stripe 提供安全付款保障</p>
-    </div>
-    <div id="orderSuccess" style="display:none;text-align:center;padding:20px 0">
-      <div style="font-size:48px;margin-bottom:16px">🎉</div>
-      <h4 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:10px">感謝您的訂購！</h4>
-      <p style="color:var(--muted);font-size:14px;line-height:1.7">我們已收到您的資料，將在 <strong style="color:var(--fg)">24 小時內</strong> 把您的專屬歌曲發送至您的電郵。敬請期待 ❤️</p>
-    </div>
-  </div>
-</div>
 
 <!-- AUDIO MODAL -->
 <div class="modal-overlay" id="audioModal" onclick="if(event.target===this)this.classList.remove('open')">
@@ -649,7 +779,7 @@
     <button class="modal-close" onclick="document.getElementById('audioModal').classList.remove('open')">✕</button>
     <h3 class="serif">🎵 試聽示範歌曲</h3>
     <audio controls src="https://foreversongstudio.com/assets/the-way-you-smile-Db5C0qd2.mp3"></audio>
-    <p class="audio-note">這是我們為一對夫婦週年紀念所創作的真實定制歌曲。</p>
+    <p class="audio-note">呢首係我哋為一對情侶週年紀念所創作嘅真實訂製廣東歌。</p>
   </div>
 </div>
 
@@ -659,30 +789,6 @@
     const isOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
-  }
-
-  function submitOrder() {
-    const email = document.getElementById('of-email').value.trim();
-    const name = document.getElementById('of-name').value.trim();
-    const occasion = document.getElementById('of-occasion').value;
-    const story = document.getElementById('of-story').value.trim();
-    if (!email || !email.includes('@')) { alert('請輸入有效的電郵地址'); return; }
-    if (!name) { alert('請輸入收禮人名字'); return; }
-    if (!occasion) { alert('請選擇送禮場合'); return; }
-    if (story.length < 20) { alert('請多分享一些您的故事（至少 20 字）'); return; }
-    // Send to Formspree (no backend needed)
-    fetch('https://formspree.io/f/xwpbgqjv', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ email, name, occasion, story })
-    }).then(() => {
-      document.getElementById('orderForm').style.display = 'none';
-      document.getElementById('orderSuccess').style.display = 'block';
-    }).catch(() => {
-      // Show success anyway — Formspree CORS fallback
-      document.getElementById('orderForm').style.display = 'none';
-      document.getElementById('orderSuccess').style.display = 'block';
-    });
   }
 </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>創作您的專屬歌曲 — ForeverSong</title>
+  <title>訂製你嘅廣東歌 — 廣東歌·為你</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Serif+TC:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -164,7 +164,7 @@
   <div class="header-inner">
     <a href="index.html" class="logo">
       <div class="logo-icon">🎵</div>
-      <span class="logo-text">ForeverSong</span>
+      <div><div class="logo-text">廣東歌·為你</div><div style="font-size:10px;color:#8a7f74;letter-spacing:1px;">Cantopop for you</div></div>
     </a>
     <div class="header-badge">
       <div class="badge-dot"></div>
@@ -458,7 +458,7 @@
   function submitForm() {
     // Send to FormSubmit → vickhung3000@hotmail.com
     const form = new FormData();
-    form.append('_subject', '🎵 新歌曲訂單 — ForeverSong');
+    form.append('_subject', '🎵 新廣東歌訂單 — 廣東歌·為你');
     form.append('_template', 'table');
     form.append('_captcha', 'false');
     form.append('收禮人關係', state.recipient);
